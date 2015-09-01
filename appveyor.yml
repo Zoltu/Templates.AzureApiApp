@@ -1,0 +1,27 @@
+branches:
+  only:
+    - master
+
+skip_tags: true
+
+version: "{build}"
+
+assembly_info:
+  patch: false
+
+platform:
+  - Any CPU
+
+configuration:
+  - Release
+
+before_build:
+  - cmd: nuget restore
+
+build:
+  project: magic_solution_name_magic.sln
+  verbosity: minimal
+
+artifacts:
+  - path: Code/bin/**/*.dll
+  - path: Code/bin/**/*.pdb
